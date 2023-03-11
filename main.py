@@ -12,6 +12,7 @@ reps = 0
 timer = None
 # ---------------------------- TIMER RESET ------------------------------- # 
 def reset_countdown():
+    btn_start['state'] = "active"
     window.after_cancel(timer)
     canvas.itemconfig(timer_text, text=f"00:00")
     l_timer.config(text="Timer", fg=GREEN)
@@ -22,6 +23,8 @@ def reset_countdown():
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_countdown():
     global reps # this application is very small so it's arguably fine to use global here
+
+    btn_start['state'] = "disable"
     reps += 1
     work_sec = WORK_MIN*60
     short_break_sec = SHORT_BREAK_MIN*60
